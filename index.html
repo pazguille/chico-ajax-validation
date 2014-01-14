@@ -1,0 +1,88 @@
+<!doctype html>
+<!--[if IE 7]>  <html class="no-js lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>  <html class="no-js lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
+<!--[if IE 9]>  <html class="no-js lt-ie10 ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es"> <!--<![endif]-->
+    <head>
+        <script></script>
+        <meta charset="utf-8" />
+        <title>Async Validation - Chico UI</title>
+
+        <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+        <meta name="HandheldFriendly" content="True">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta http-equiv="cleartype" content="on">
+
+        <link rel="stylesheet" href="http://static.mlstatic.com/org-img/ch/ui/1.1.0/chico.min.css">
+        <link rel="stylesheet" href="http://static.mlstatic.com/org-img/ch/mesh/2.2/mesh.min.css">
+        <style>
+            body {
+                margin-top: 80px;
+            }
+
+            .ml-header {
+                background-color: #fff;
+                border-bottom: 1px solid #D9D9D9;
+                height: 50px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 99;
+            }
+
+            .ml-header h1 {
+                text-align: center;
+                line-height: 1.6em;
+            }
+
+            .ch-form-row label {
+                width: 85px;
+            }
+            .ch-form-actions {
+                margin-left: 100px;
+            }
+        </style>
+    </head>
+
+    <body class="ch-g1">
+        <div class="ml-header">
+            <h1 id="components">Ajax Validations - Chico UI</h1>
+        </div>
+
+        <form id="async-form" action="http://chico.mercadolibre.com" class="ch-form ch-form-big ch-g1-2">
+            <fieldset>
+                <legend>Async Validation</legend>
+                <div class="ch-form-row">
+                    <label for="zip_async">Zip Code:</label>
+                    <input class="ch-form-icon-input" type="text" id="zip_async" name="zip_async" size="25">
+                    <i class="ch-form-icon-inner ch-icon-user"></i>
+                </div>
+                <div class="ch-form-actions">
+                    <input type="submit" name="confirmation" value="Send" class="ch-btn">
+                    <a href="#">Cancel</a>
+                </div>
+            </fieldset>
+        </form>
+
+        <form id="sync-form" action="http://chico.mercadolibre.com" class="ch-form ch-form-big ch-g1-2">
+            <fieldset>
+                <legend>Sync Validation</legend>
+                <div class="ch-form-row">
+                    <label for="zip_sync">Zip Code:</label>
+                    <input class="ch-form-icon-input" type="text" id="zip_sync" name="zip_sync" size="25">
+                    <i class="ch-form-icon-inner ch-icon-user"></i>
+                </div>
+                <div class="ch-form-actions">
+                    <input type="submit" name="confirmation" value="Send" class="ch-btn">
+                    <a href="#">Cancel</a>
+                </div>
+            </fieldset>
+        </form>
+
+        <script src="http://static.mlstatic.com/org-img/ch/vendor/jquery/jquery-1.10.2.min.js"></script>
+        <script src="http://static.mlstatic.com/org-img/ch/ui/1.1.0/chico.min.js"></script>
+        <script src="src/async.validation.js"></script>
+        <script src="src/sync.validation.js"></script>
+    </body>
+</html>
