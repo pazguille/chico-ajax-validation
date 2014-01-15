@@ -17,7 +17,9 @@
         <link rel="stylesheet" href="http://static.mlstatic.com/org-img/ch/mesh/2.2/mesh.min.css">
         <style>
             body {
-                margin-top: 80px;
+                background-color: #F7F7F7;
+                margin: 80px auto;
+                padding: 0;
             }
 
             .ml-header {
@@ -37,48 +39,79 @@
             }
 
             .ch-form-row label {
-                width: 85px;
+                width: 60px;
             }
-            .ch-form-actions {
-                margin-left: 100px;
+            .ch-form-actions,
+            .ch-form-hint {
+                margin-left: 75px;
+            }
+
+            section {
+                margin: 30px auto;
+                padding: 0 20px;
+                width: 80%;
+                overflow: hidden;
+            }
+
+            .ch-box-lite {
+                padding: 30px 20px;
+                margin: 10px;
+                width: 43%;
+            }
+
+            footer {
+                margin: 80px auto 0;
+                text-align: center;
+            }
+
+            .heart {
+                font-style: normal;
+                font-weight: 500;
+                color: #c0392b;
+                text-decoration: none;
             }
         </style>
     </head>
 
     <body class="ch-g1">
-        <div class="ml-header">
+        <header class="ml-header">
             <h1 id="components">Ajax Validations - Chico UI</h1>
-        </div>
+        </header>
 
-        <form id="async-form" action="http://chico.mercadolibre.com" class="ch-form ch-form-big ch-g1-2">
-            <fieldset>
-                <legend>Async Validation</legend>
-                <div class="ch-form-row">
-                    <label for="zip_async">Zip Code:</label>
-                    <input class="ch-form-icon-input" type="text" id="zip_async" name="zip_async" size="25">
-                    <i class="ch-form-icon-inner ch-icon-user"></i>
-                </div>
+        <section>
+            <form id="async-form" action="http://chico.mercadolibre.com" class="ch-form ch-form-big ch-box-lite ch-g1-2">
+                <fieldset>
+                    <legend>Async Validation</legend>
+                    <div class="ch-form-row">
+                        <label for="zip_async">Zip Code:</label>
+                        <input class="ch-form-icon-input" type="text" id="zip_async" name="zip_async" size="25">
+                        <p class="ch-form-hint">You can use <strong>90040060</strong> as a valid zip code.</p>
+                    </div>
+                </fieldset>
                 <div class="ch-form-actions">
                     <input type="submit" name="confirmation" value="Send" class="ch-btn">
                     <a href="#">Cancel</a>
                 </div>
-            </fieldset>
-        </form>
 
-        <form id="sync-form" action="http://chico.mercadolibre.com" class="ch-form ch-form-big ch-g1-2">
-            <fieldset>
-                <legend>Sync Validation</legend>
-                <div class="ch-form-row">
-                    <label for="zip_sync">Zip Code:</label>
-                    <input class="ch-form-icon-input" type="text" id="zip_sync" name="zip_sync" size="25">
-                    <i class="ch-form-icon-inner ch-icon-user"></i>
-                </div>
+            </form>
+
+            <form id="sync-form" action="http://chico.mercadolibre.com" class="ch-form ch-form-big ch-box-lite ch-g1-2">
+                <fieldset>
+                    <legend>Sync Validation</legend>
+                    <div class="ch-form-row">
+                        <label for="zip_sync">Zip Code:</label>
+                        <input class="ch-form-icon-input" type="text" id="zip_sync" name="zip_sync" size="25">
+                        <p class="ch-form-hint">You can use <strong>90040060</strong> as a valid zip code.</p>
+                    </div>
+                </fieldset>
                 <div class="ch-form-actions">
                     <input type="submit" name="confirmation" value="Send" class="ch-btn">
                     <a href="#">Cancel</a>
                 </div>
-            </fieldset>
-        </form>
+            </form>
+        </section>
+
+        <footer>With <spam class="heart">❤</span></footer>
 
         <script src="http://static.mlstatic.com/org-img/ch/vendor/jquery/jquery-1.10.2.min.js"></script>
         <script src="http://static.mlstatic.com/org-img/ch/ui/1.1.0/chico.min.js"></script>

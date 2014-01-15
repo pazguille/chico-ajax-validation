@@ -1,54 +1,63 @@
 (function (window) {
 
+    // Defines some flags and globals variables.
+    var ok = true,
+        ongoing = true,
+        submit = false,
+        form,
+        async;
+
     function prevent(eve) {
         eve.preventDefault();
     }
 
-    var ok = true,
-        ongoing = true,
-        submit = false,
-        form = $('#async-form').on('submit', function () {
-                submit = true;
+    function validateAgain(validate) {
+        ok = validate;
+        async.validate();
+        ongoing = true;
+    }
+
+    function customAsync(value) {
+
+        if (ongoing) {
+            ongoing = false;
+
+            $.ajax({
+                'url': 'https://api.mercadolibre.com/countries/BR/zip_codes/' + value,
+                'dataType': 'json',
+                'type': 'GET',
+                'async': true
             })
-            .form()
-            .on('success', prevent),
+            .done(function () {
+                validateAgain(true);
+                if (submit) {
+                    form.off('success', prevent);
+                    form._el.submit();
+                }
+            })
+            .error(function () {
+                setTimeout(function () {
+                    validateAgain(false);
+                }, 100);
+            });
+        }
 
-        async = $('#zip_async').required().and().custom('async', function (value) {
+        return ok;
+    }
 
-            if (ongoing) {
-                ongoing = false;
+    form = $('#async-form')
+        .on('submit', function () {
+            submit = true;
+        })
+        .form()
+            .on('success', prevent);
 
-                //ZIP CODE: 90040060
-                $.ajax({
-                    'url': 'https://api.mercadolibre.com/countries/BR/zip_codes/' + value,
-                    'dataType': 'json',
-                    'type': 'GET',
-                    'async': true
-                })
-                .done(function () {
-                    ok = true;
-                    async.validate();
-                    ongoing = true;
+    async = $('#zip_async')
+        .required()
+        .and()
+        .custom('async', customAsync, 'Please, enter a valid zip code.')
+        .on('error', function () {
+            submit = false;
+        });
 
-                    if (submit) {
-                        form.off('success', prevent);
-                        form._el.submit();
-                    }
-
-                })
-                .error(function () {
-                    submit = false;
-                    ok = false;
-                    setTimeout(function () {
-                        form.once('success', prevent);
-                        async.validate();
-                        ongoing = true;
-                    }, 100);
-
-                });
-            }
-
-            return ok;
-
-        }, 'Message async.');
 }(this));
